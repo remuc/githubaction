@@ -10,7 +10,7 @@ on:
       - feat/** 
   pull_request:
     branches:
-      - feat/*
+      - feat/**
       - bug/*
       - hotfix/*
 
