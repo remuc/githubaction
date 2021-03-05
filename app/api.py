@@ -2,17 +2,20 @@ from flask import Flask
 from flask import jsonify
 from flask import request
 from convert import *
+
 app = Flask(__name__)
 convert = CidrMaskConvert()
 validate = IpValidate()
+
 # Just a health check
 @app.route("/")
 def url_root():
     return "OK"
+
 # Just a health check
 @app.route("/_health")
 def url_health():
-    return "OK :)"
+    return "OK"
 
 # e.g. http://127.0.0.1:8000/cidr-to-mask?value=8
 @app.route("/cidr-to-mask")
@@ -24,6 +27,7 @@ def url_cidr_to_mask():
         "output": convert.cidr_to_mask(val),
     }
     return jsonify(res)
+
 # # e.g. http://127.0.0.1:8000/mask-to-cidr?value=255.0.0.0
 @app.route("/mask-to-cidr")
 def url_mask_to_cidr():
@@ -34,6 +38,7 @@ def url_mask_to_cidr():
         "output": convert.mask_to_cidr(val),
     }
     return jsonify(res)
+
 # # e.g. http://127.0.0.1:8000/ip-validation?value=255.0.0.0
 @app.route("/mask-to-cidr")
 def url_mask_to_cidr():
