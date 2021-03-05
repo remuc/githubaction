@@ -15,7 +15,7 @@ def url_root():
 # Just a health check
 @app.route("/_health")
 def url_health():
-    return "OK"
+    return "OK :)"
 
 # e.g. http://127.0.0.1:8000/cidr-to-mask?value=8
 @app.route("/cidr-to-mask")
